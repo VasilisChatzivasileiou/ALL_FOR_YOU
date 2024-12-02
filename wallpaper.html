@@ -18,7 +18,7 @@
             padding: 0;
             background-color: #262C2C; /* Fallback color */
             background-image: url('images/soul.png'); /* Add your image path here */
-            background-size: cover; /* Make sure the image covers the entire screen */
+            background-size: cover; /* Default: Cover the screen */
             background-position: center; /* Center the image */
             background-repeat: no-repeat; /* Prevent the image from repeating */
             display: flex;
@@ -48,18 +48,26 @@
 
         /* Responsive Design for smaller screens */
         @media (max-width: 768px) {
+            body {
+                background-size: contain; /* Zoom out background for medium screens */
+            }
+
             .title {
                 font-size: 36px;
             }
         }
 
         @media (max-width: 480px) {
+            body {
+                background-size: 150%; /* Further zoom out for smaller screens */
+            }
+
             .title {
                 font-size: 28px;
             }
 
             .logo {
-                width: 80px; /* Resize logo for smaller screens */
+                width: 60px; /* Resize logo for smaller screens */
             }
         }
     </style>
