@@ -42,8 +42,8 @@
         }
 
         .next-button {
-            position: absolute;
-            bottom: -750px;
+            position: fixed;
+            bottom: 50px; /* Changed from -750px to a fixed distance from the bottom */
             left: 50%;
             transform: translateX(-50%);
             width: 150px;
@@ -52,10 +52,11 @@
             border: none;
             border-radius: 0px;
             color: white;
-            font-size: 49px;
+            font-size: 40px; /* Reduced font size for better fit */
             font-family: 'Identifier', Arial, sans-serif;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            z-index: 10; /* Ensures it appears on top of other elements */
         }
 
         .next-button:hover {
@@ -102,6 +103,24 @@
             width: 90px;
             height: 90px;
         }
+        /* Responsive Design for smaller screens */
+        @media (max-width: 768px) {
+            .next-button {
+                width: 120px; /* Adjust button size for smaller screens */
+                height: 50px;
+                font-size: 40px;
+                bottom: 30px; /* Make it closer to the bottom for compact screens */
+            }
+        }
+        @media (max-width: 480px) {
+            .next-button {
+                width: 100px;
+                height: 40px;
+                font-size: 18px;
+                bottom: 20px;
+            }
+        }
+
     </style>
 </head>
 <body>
