@@ -5,20 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>all for you</title>
     <style>
+        /* Load the custom font */
+        @font-face {
+            font-family: 'Identifier';
+            src: url('fonts/IDTFIdentifier-0.1-Bold.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         body {
             margin: 0;
             padding: 0;
-            background-color: #262C2C; /* Match the color in your main page */
+            background-color: #262C2C; /* Fallback color */
+            background-image: url('images/soul.png'); /* Add your image path here */
+            background-size: cover; /* Make sure the image covers the entire screen */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start; /* Align title at the top */
             height: 100vh;
-            color: white; /* Optional, to make text readable if added later */
-            font-family: Arial, sans-serif;
+            color: white; /* Optional, to make text readable */
+            font-family: 'Identifier', Arial, sans-serif; /* Match the font of your main page */
+            box-sizing: border-box;
+        }
+
+        .logo {
+            position: absolute; /* Place it at the top-left corner */
+            top: 10px; /* Adjust spacing from the top */
+            left: 10px; /* Adjust spacing from the left */
+            width: 90px; /* Adjust size as needed */
+            height: auto; /* Keep the aspect ratio */
+            cursor: pointer; /* Indicate it's clickable */
+        }
+
+        .title {
+            margin-top: 30px; /* Adjust this for spacing from the top */
+            text-align: center;
+            color: #E1384D; /* Match the color in your main page */
+            font-size: 48px;
+        }
+
+        /* Responsive Design for smaller screens */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 28px;
+            }
+
+            .logo {
+                width: 80px; /* Resize logo for smaller screens */
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Blank content for now -->
+    <!-- Clickable Logo in the top-left corner -->
+    <a href="index.html">
+        <img src="icons/AFYlogo.png" alt="Logo" class="logo">
+    </a>
+
+    <!-- Centered Title -->
+    <div class="title">ALL FOR <u>YOU</u></div>
 </body>
 </html>
