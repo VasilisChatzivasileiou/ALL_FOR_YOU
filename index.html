@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All for You</title>
+    <style>
+        @font-face {
+            font-family: 'Identifier';
+            src: url('fonts/IDTFIdentifier-0.1-Bold.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            margin: 0;
+            padding: 50px;
+            background-color: #262C2C;
+            font-family: 'Identifier', Arial, sans-serif;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .title {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #E1384D;
+            font-size: 48px;
+            text-align: center;
+        }
+
+        .quote {
+            position: absolute;
+            top: 400px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #E1384D;
+            font-size: 24px;
+            text-align: center;
+            max-width: 80%;
+        }
+
+        .next-button {
+            position: absolute;
+            bottom: -750px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 60px;
+            background-color: #E1384D;
+            border: none;
+            border-radius: 0px;
+            color: white;
+            font-size: 49px;
+            font-family: 'Identifier', Arial, sans-serif;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .next-button:hover {
+            background-color: #262C2C;
+        }
+
+        .menu-container {
+            position: absolute;
+            top: 40%;
+            right: 69px;
+        }
+
+        .menu-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .menu-icon {
+            width: 60px;
+            height: 50px;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background-color: #E1384D;
+            width: 150px;
+            height: 200px;
+            border-radius: 5px;
+        }
+
+        /* Logo Container */
+        .logo-container {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+        }
+
+        .logo {
+            width: 90px;
+            height: 90px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo -->
+    <div class="logo-container">
+        <img src="icons/AFYlogo.png" alt="Logo" class="logo">
+    </div>
+
+    <!-- Centered Title -->
+    <div class="title">ALL FOR YOU</div>
+
+    <!-- Centered Quote -->
+    <div class="quote" id="quote">
+        "The best time to plant a tree was 20 years ago. The second best time is now."
+    </div>
+
+    <!-- Next Button -->
+    <button class="next-button" onclick="showNextQuote()">next</button>
+
+    <!-- Dropdown Menu -->
+    <div class="menu-container">
+        <button class="menu-button" onclick="toggleMenu()">
+            <img src="icons/Group 180.png" alt="Menu" class="menu-icon">
+        </button>
+        <div class="dropdown-menu" id="dropdownMenu"></div>
+    </div>
+
+    <script>
+        const quotes = [
+            "The best time to plant a tree was 20 years ago. The second best time is now.",
+            "Do what you can, with what you have, where you are.",
+            "Life is 10% what happens to us and 90% how we react to it.",
+            "The only way to do great work is to love what you do.",
+            "Success is not final, failure is not fatal: It is the courage to continue that counts."
+        ];
+
+        let currentQuoteIndex = 0;
+
+        function showNextQuote() {
+            currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+            document.getElementById('quote').innerText = quotes[currentQuoteIndex];
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById("dropdownMenu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+    </script>
+</body>
+</html>
