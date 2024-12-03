@@ -125,8 +125,8 @@
     <div class="content">
         <div class="subtitle">introduce yourself</div>
         <div class="input-container">
-            <input type="text" class="name-input" id="nameInput" placeholder="Your name..." />
-            <button class="okay-button" onclick="updateTitle()">Okay</button>
+            <input type="text" class="name-input" id="nameInput" placeholder="your name..." />
+            <button class="okay-button" onclick="updateTitle()">okay</button>
         </div>
     </div>
 
@@ -155,7 +155,7 @@
         // Show the welcome message
         const welcomeMessage = document.createElement('div');
         welcomeMessage.className = 'welcome-message';
-        welcomeMessage.innerText = `Welcome ${uppercaseName}`;
+        welcomeMessage.innerText = `welcome ${uppercaseName}`;
         document.querySelector('.content').appendChild(welcomeMessage);
 
         // Add a click listener to the name in the title
@@ -183,7 +183,7 @@ function loadSavedName() {
         // Show the welcome message
         const welcomeMessage = document.createElement('div');
         welcomeMessage.className = 'welcome-message';
-        welcomeMessage.innerText = `Welcome ${savedName}`;
+        welcomeMessage.innerText = `welcome ${savedName}`;
         document.querySelector('.content').appendChild(welcomeMessage);
 
         // Add a click listener to the name in the title
