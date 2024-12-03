@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>all for you</title>
+    <title>ALL FOR YOU</title>
     <style>
         @font-face {
             font-family: 'Identifier';
@@ -120,8 +120,8 @@
             height: 90px;
         }
 
-                /* Responsive Design for smaller screens */
-                @media (max-width: 768px) {
+        /* Responsive Design for smaller screens */
+        @media (max-width: 768px) {
             .next-button {
                 width: 120px;
                 height: 50px;
@@ -157,7 +157,6 @@
                 right: 19px;
             }
         }
-        
     </style>
 </head>
 <body>
@@ -180,11 +179,12 @@
         <div class="dropdown-menu" id="dropdownMenu">
             <button onclick="navigateToWallpaper()">info</button>
             <button onclick="navigateToIntroduction()">introduction</button>
+            <button onclick="navigateToAddQuote()">add quote</button>
         </div>
     </div>
 
     <script>
-        const quotes = [
+        const predefinedQuotes = [
             "The best time to plant a tree was 20 years ago. The second best time is now.",
             "Do what you can, with what you have, where you are.",
             "Life is 10% what happens to us and 90% how we react to it.",
@@ -194,16 +194,34 @@
 
         let currentQuoteIndex = 0;
 
-        function showNextQuote() {
-            currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
-            document.getElementById('quote').innerText = quotes[currentQuoteIndex];
+        // Load all quotes (predefined + user-added)
+        function loadQuotes() {
+            const userQuotes = JSON.parse(localStorage.getItem("userQuotes")) || [];
+            return [...predefinedQuotes, ...userQuotes];
         }
 
+        // Display the next quote
+        function showNextQuote() {
+            const allQuotes = loadQuotes();
+            currentQuoteIndex = (currentQuoteIndex + 1) % allQuotes.length;
+            document.getElementById('quote').innerText = allQuotes[currentQuoteIndex];
+        }
+
+        // Load saved name and update the title
+        function loadSavedName() {
+            const savedName = localStorage.getItem('userName');
+            if (savedName) {
+                document.querySelector('.title').innerHTML = `ALL FOR <u>${savedName}</u>`;
+            }
+        }
+
+        // Menu toggle
         function toggleMenu() {
             const menu = document.getElementById("dropdownMenu");
             menu.style.display = menu.style.display === "block" ? "none" : "block";
         }
 
+        // Navigation functions
         function navigateToWallpaper() {
             window.location.href = "wallpaper.html";
         }
@@ -211,6 +229,17 @@
         function navigateToIntroduction() {
             window.location.href = "introduction.html";
         }
+
+        function navigateToAddQuote() {
+            window.location.href = "add_quote.html";
+        }
+
+        // Initialize page
+        document.addEventListener("DOMContentLoaded", () => {
+            const allQuotes = loadQuotes();
+            document.getElementById('quote').innerText = allQuotes[currentQuoteIndex];
+            loadSavedName();
+        });
     </script>
 </body>
 </html>
