@@ -32,12 +32,11 @@
 
         .quote {
             position: absolute;
-            padding-top: 0px;
-            top: 420px;
+            top: 400px;
             left: 50%;
             transform: translate(-50%, -50%);
             color: #E1384D;
-            font-size: 48px;
+            font-size: 44px;
             text-align: center;
             max-width: 80%;
         }
@@ -110,7 +109,6 @@
             color: white;
         }
 
-        /* Logo Container */
         .logo-container {
             position: absolute;
             top: 10px;
@@ -121,80 +119,28 @@
             width: 90px;
             height: 90px;
         }
-
-        /* Responsive Design for smaller screens */
-        @media (max-width: 768px) {
-            .next-button {
-                width: 120px;
-                height: 50px;
-                font-size: 40px;
-                bottom: 50px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .next-button {
-                width: 80px;
-                height: 40px;
-                font-size: 28px;
-                bottom: 20px;
-            }
-            .menu-icon {
-                width: 40px;
-                height: 30px;
-            }
-            .logo {
-                width: 60px;
-                height: 60px;
-            }
-            .title {
-                top: 50%;
-                font-size: 28px;
-            }
-            .quote {
-                font-size: 35px
-            }
-            .menu-container {
-                top: 20%;
-                right: 19px;
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- Logo -->
     <div class="logo-container">
         <img src="icons/AFYlogo.png" alt="Logo" class="logo">
     </div>
 
-    <!-- Centered Title -->
     <div class="title">ALL FOR <u>YOU</u></div>
 
-    <!-- Centered Quote -->
     <div class="quote" id="quote">
         "The best time to plant a tree was 20 years ago. The second best time is now."
     </div>
 
-    <!-- Next Button -->
     <button class="next-button" onclick="showNextQuote()">next</button>
 
-    <!-- Dropdown Menu -->
     <div class="menu-container">
         <button class="menu-button" onclick="toggleMenu()">
             <img src="icons/Group 180.png" alt="Menu" class="menu-icon">
         </button>
         <div class="dropdown-menu" id="dropdownMenu">
-            <!-- Wallpaper Button -->
-            <button onclick="navigateToWallpaper()" style="
-                width: 100%;
-                height: 50px;
-                background-color: #262C2C;
-                color: #CCCCCC;
-                border: none;
-                font-size: 24px;
-                cursor: pointer;">
-                info
-            </button>
+            <button onclick="navigateToWallpaper()">info</button>
+            <button onclick="navigateToIntroduction()">introduction</button>
         </div>
     </div>
 
@@ -219,12 +165,12 @@
             menu.style.display = menu.style.display === "block" ? "none" : "block";
         }
 
-        function goToWallpaper() {
-            // Redirect to a new blank page
+        function navigateToWallpaper() {
             window.location.href = "wallpaper.html";
         }
-        function navigateToWallpaper() {
-            window.location.href = "wallpaper.html"; // Redirects to the new page
+
+        function navigateToIntroduction() {
+            window.location.href = "introduction.html";
         }
     </script>
 </body>
