@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALL FOR YOU</title>
+    <title>all for you</title>
     <style>
         @font-face {
             font-family: 'Identifier';
@@ -81,16 +81,26 @@
             cursor: pointer;
             background-color: #E1384D;
             color: #CCCCCC;
-            padding: 0px 0px;
-            font-size: 24px;
+            padding: 10px 20px;
+            font-size: 16px;
             font-family: 'Identifier', Arial, sans-serif;
             margin-top: 20px;
             transition: all 0.3s ease;
+            border: none;
+            border-radius: 5px;
         }
 
         .erase-button:hover {
             background-color: #262C2C;
             color: #E1384D;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-size: 20px;
+            font-style: italic;
+            color: #E1384D;
+            text-align: center;
         }
 
         @media (max-width: 480px) {
@@ -123,12 +133,15 @@
 
     <!-- Input container -->
     <div class="container">
-        <input type="text" id="quoteInput" class="quote-input" placeholder="enter your quote..." />
+        <input type="text" id="quoteInput" class="quote-input" placeholder="Enter your quote..." />
         <br />
         <img src="icons/enter-button.png" alt="Enter Button" class="enter-button" onclick="addQuote()" />
 
         <!-- Erase All Quotes button -->
-        <button class="erase-button" onclick="eraseAllQuotes()">Erase All Actions</button>
+        <button class="erase-button" onclick="eraseAllQuotes()">Erase All Quotes</button>
+
+        <!-- Feedback message -->
+        <div id="feedback" class="feedback"></div>
     </div>
 
     <script>
@@ -137,42 +150,42 @@
             const userName = localStorage.getItem("userName");
 
             if (userName) {
-                // If a name exists, update the title with the stored name
                 const titleElement = document.getElementById("dynamicTitle");
                 titleElement.innerHTML = `ALL FOR <u>${userName.toUpperCase()}</u>`;
             }
-            // Otherwise, leave the title as the default ("ALL FOR YOU")
         }
 
         // Function to add a new quote
         function addQuote() {
             const quoteInput = document.getElementById("quoteInput");
+            const feedback = document.getElementById("feedback");
             const newQuote = quoteInput.value.trim();
 
-            if (newQuote) {
-                // Retrieve existing quotes from localStorage
-                const storedQuotes = JSON.parse(localStorage.getItem("userQuotes")) || [];
-
-                // Add the new quote to the array
-                storedQuotes.push(newQuote);
-
-                // Save the updated array back to localStorage
-                localStorage.setItem("userQuotes", JSON.stringify(storedQuotes));
-
-                alert("Your quote has been added!");
-                quoteInput.value = ""; // Clear the input field
-            } else {
-                alert("Please enter a quote!");
+            if (!newQuote) {
+                feedback.textContent = "please enter a valid quote!";
+                return;
             }
+
+            const storedQuotes = JSON.parse(localStorage.getItem("userQuotes")) || [];
+
+            if (storedQuotes.includes(newQuote)) {
+                feedback.textContent = "This quote already exists!";
+                return;
+            }
+
+            storedQuotes.push(newQuote);
+            localStorage.setItem("userQuotes", JSON.stringify(storedQuotes));
+
+            feedback.textContent = "Your quote has been added!";
+            quoteInput.value = "";
         }
 
         // Function to erase all custom quotes
         function eraseAllQuotes() {
             const confirmation = confirm("Are you sure you want to erase all custom quotes?");
             if (confirmation) {
-                // Clear the 'userQuotes' key from localStorage
                 localStorage.removeItem("userQuotes");
-                alert("All custom quotes have been erased!");
+                document.getElementById("feedback").textContent = "All custom quotes have been erased!";
             }
         }
 
