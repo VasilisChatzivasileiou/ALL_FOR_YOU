@@ -119,11 +119,11 @@
     </a>
 
     <!-- Title -->
-    <div class="title">ALL FOR <u>YOU</u></div>
+    <div class="title" id="dynamicTitle">ALL FOR <u>YOU</u></div>
 
     <!-- Input container -->
     <div class="container">
-        <input type="text" id="quoteInput" class="quote-input" placeholder="Enter your quote..." />
+        <input type="text" id="quoteInput" class="quote-input" placeholder="enter your quote..." />
         <br />
         <img src="icons/enter-button.png" alt="Enter Button" class="enter-button" onclick="addQuote()" />
 
@@ -132,6 +132,18 @@
     </div>
 
     <script>
+        // Function to check if a name exists in localStorage and update the title
+        function updateTitle() {
+            const userName = localStorage.getItem("userName");
+
+            if (userName) {
+                // If a name exists, update the title with the stored name
+                const titleElement = document.getElementById("dynamicTitle");
+                titleElement.innerHTML = `ALL FOR <u>${userName.toUpperCase()}</u>`;
+            }
+            // Otherwise, leave the title as the default ("ALL FOR YOU")
+        }
+
         // Function to add a new quote
         function addQuote() {
             const quoteInput = document.getElementById("quoteInput");
@@ -163,6 +175,9 @@
                 alert("All custom quotes have been erased!");
             }
         }
+
+        // Initialize the page
+        updateTitle();
     </script>
 </body>
 </html>
